@@ -14,6 +14,11 @@ class Mahasiswa extends CI_Controller {
 		$this->load->model('jalur_penerimaan_model');
 		$this->load->model('program_studi_model');
 		$this->load->model('mahasiswa_model');
+
+		$this->load->library('user_agent');
+
+		if ($this->agent->browser() === 'Chrome' && ENVIRONMENT != 'development')
+			redirect('error/browser_not_compatible');
 	}
 
 	public function index()
