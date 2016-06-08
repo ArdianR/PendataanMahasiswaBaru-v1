@@ -79,6 +79,11 @@ class Mahasiswa_model extends CI_Model {
 		$this->deskripsi_diri = $this->input->post('deskripsi_diri');
 		$this->created_at = date('Y-m-d H:i:s');
 
-		$this->db->insert('mahasiswa', $this);
+		$query = $this->db->insert('mahasiswa', $this);
+		if ($query) {
+			return $this->db->insert_id();
+		} else {
+			return $query;
+		}
 	}
 }
