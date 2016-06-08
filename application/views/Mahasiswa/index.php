@@ -258,7 +258,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 				<div class="form-group">
 					<?php echo form_label('LINE', 'inputLINE', $attrLabel); ?>
 					<div class="col-md-8">
-						<?php echo form_input(array_merge($attrInput, array(
+						<?php echo form_input(array_merge($attrInputNotRequired, array(
 								'id' => 'inputLINE',
 								'name' => 'line',
 								'placeholder' => 'ID LINE'
