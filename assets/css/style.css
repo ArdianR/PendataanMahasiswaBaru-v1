@@ -1,0 +1,24 @@
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background: rgba(0,0,0,0.025);
+}
+
+.jumbotron {
+	background: radial-gradient(transparent, black), url('../img/header_jtk.jpg') no-repeat;
+	background-size: cover;
+	background-position: center center;
+	color: #fff;
+	text-shadow: 0 0 5px #000;
+}
+
+.jumbotron h1 {
+	letter-spacing: -1px;
+}
+
+.next-step {
+	font-weight: bold;
+}
+
+.lead {
+	font-size: 1.3em;
+}
