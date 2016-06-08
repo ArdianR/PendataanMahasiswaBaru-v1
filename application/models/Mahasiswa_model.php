@@ -20,6 +20,7 @@ class Mahasiswa_model extends CI_Model {
 	public $facebook;
 	public $twitter;
 	public $instagram;
+	public $line;
 	public $status;
 	public $cita_cita;
 	public $hobi;
@@ -64,6 +65,7 @@ class Mahasiswa_model extends CI_Model {
 		$this->facebook = trim($this->input->post('facebook')) == '' ? NULL : $this->input->post('facebook');
 		$this->twitter = trim($this->input->post('twitter')) == '' ? NULL : $this->input->post('twitter');
 		$this->instagram = trim($this->input->post('instagram')) == '' ? NULL : $this->input->post('instagram');
+		$this->line = trim($this->input->post('line')) == '' ? NULL : $this->input->post('line');
 		$this->status = $this->input->post('status');
 		$this->cita_cita = $this->input->post('cita_cita');
 		$this->hobi = $this->input->post('hobi');
