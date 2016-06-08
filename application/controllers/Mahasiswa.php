@@ -31,8 +31,10 @@ class Mahasiswa extends CI_Controller {
 		}
 		else
 		{
-			$this->mahasiswa_model->insert_from_input();
-			redirect('mahasiswa/success');
+			$id = $this->mahasiswa_model->insert_from_input();
+
+			if ($id !== FALSE)
+				redirect('mahasiswa/webcam/' . $id);
 		}
 	}
 
