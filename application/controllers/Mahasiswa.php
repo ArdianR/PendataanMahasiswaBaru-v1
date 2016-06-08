@@ -36,6 +36,38 @@ class Mahasiswa extends CI_Controller {
 		}
 	}
 
+	public function webcam($id)
+	{
+		$data['mahasiswa'] = $this->mahasiswa_model->get_id($id);
+
+		if ($data['mahasiswa'] === FALSE)
+			redirect('mahasiswa/index');
+
+		if ($_SERVER['REQUEST_METHOD'] == 'GET')
+		{
+			$this->load->view('Mahasiswa/webcam', $data);
+		}
+		else
+		{
+			$webcam_data = $this->input->post('webcam_data');
+			$binary_data = base64_decode($webcam_data);
+
+			$this->load->helper('file');
+
+			if ( !is_dir('upload')) mkdir('upload');
+			if ( !is_dir('upload/' . date('Y'))) mkdir('upload/' . date('Y'));
+
+			if ( ! write_file('upload/' . date('Y') . '/' . $id . '.jpg', $binary_data))
+			{
+				echo 'Unable to write the file, contact developer';
+			}
+			else
+			{
+				redirect('mahasiswa/success/' . $id);
+			}
+		}
+	}
+
 	public function success()
 	{
 		$this->load->view('Mahasiswa/success');
