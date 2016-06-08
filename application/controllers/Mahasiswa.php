@@ -70,8 +70,14 @@ class Mahasiswa extends CI_Controller {
 		}
 	}
 
-	public function success()
+	public function success($id = NULL)
 	{
+		if ($id == NULL)
+			redirect('mahasiswa/index');
+
+		if ( !file_exists('upload/' . date('Y') . '/' . $id . '.jpg'))
+			redirect('mahasiswa/webcam/' . $id);
+
 		$this->load->view('Mahasiswa/success');
 	}
 }
