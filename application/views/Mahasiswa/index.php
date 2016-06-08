@@ -30,7 +30,8 @@ $attrLabel = array(
 		'class' => 'col-md-4 control-label'
 	);
 $attrInputNotRequired = array(
-		'class' => 'form-control'
+		'class' => 'form-control',
+		'autocomplete' => 'off'
 	);
 $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 
