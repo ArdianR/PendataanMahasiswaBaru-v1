@@ -382,7 +382,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_textarea(array_merge($attrInput, array(
 								'id' => 'inputDeskripsiDiri',
 								'name' => 'deskripsi_diri',
-								'placeholder' => 'Deskripsi diri'
+								'placeholder' => 'Deskripsi diri',
+								'rows' => '3'
 							))); ?>
 					</div>
 				</div>
