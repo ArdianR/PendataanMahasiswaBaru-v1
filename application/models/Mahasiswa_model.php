@@ -48,7 +48,12 @@ class Mahasiswa_model extends CI_Model {
 	public function get_id($id)
 	{
 		$query = $this->db->where('id', $id)->get('mahasiswa');
-		return $query->result()[0];
+		$result = $query->result();
+
+		if (count($result))
+			return $result[0];
+
+		return FALSE;
 	}
 
 	public function insert_from_input()
