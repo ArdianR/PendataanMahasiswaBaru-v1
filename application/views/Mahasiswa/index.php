@@ -112,19 +112,15 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 				</div>
 
 				<div class="form-group">
-					<?php echo form_label('Tempat lahir', 'inputTempatLahir', $attrLabel); ?>
-					<div class="col-md-8">
+					<?php echo form_label('Tempat dan tanggal lahir', 'inputTempatLahir', $attrLabel); ?>
+					<div class="col-md-4">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputTempatLahir',
 								'name' => 'tempat_lahir',
 								'placeholder' => 'Tempat lahir'
 							))); ?>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<?php echo form_label('Tanggal lahir', 'inputTanggalLahir', $attrLabel); ?>
-					<div class="col-md-8">
+					<div class="col-md-4">
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputTanggalLahir',
 								'name' => 'tanggal_lahir',
