@@ -125,7 +125,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputTanggalLahir',
 								'name' => 'tanggal_lahir',
-								'placeholder' => 'Tanggal lahir (format: yyyy-mm-dd)',
+								'placeholder' => 'Tanggal lahir (yyyy-mm-dd)',
 								'type' => 'date'
 							))); ?>
 					</div>
