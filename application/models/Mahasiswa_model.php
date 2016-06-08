@@ -53,7 +53,6 @@ class Mahasiswa_model extends CI_Model {
 
 	public function insert_from_input()
 	{
-		$this->id = $this->input->post('id');
 		$this->nama_lengkap = $this->input->post('nama_lengkap');
 		$this->nama_panggilan = $this->input->post('nama_panggilan');
 		$this->jenis_kelamin = $this->input->post('jenis_kelamin');
