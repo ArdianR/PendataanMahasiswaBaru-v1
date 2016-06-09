@@ -392,7 +392,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 
 				<div class="form-group">
 					<div class="col-md-8 col-md-offset-4">
-						<?php echo form_submit('', 'Submit', array('class' => 'btn btn-primary')); ?>
+						<?php echo form_submit('', 'Selanjutnya', array('class' => 'btn btn-primary')); ?>
 					</div>
 				</div>
 

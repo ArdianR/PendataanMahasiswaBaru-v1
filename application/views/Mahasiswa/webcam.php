@@ -10,6 +10,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<?php echo link_tag('assets/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('assets/css/style.css'); ?>
+
+	<style>
+	.jumbotron {
+		padding: 20px 0;
+	}
+	.jumbotron h1 {
+		margin: 0;
+		font-size: 2em;
+		letter-spacing: 0px;
+	}
+	.jumbotron h1 small {
+		color: #fff;
+	}
+	</style>
 </head>
 <body>
 
@@ -17,8 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				<h1>Selamat datang, JTK <?php echo date('Y'); ?>!</h1>
-				<p>Selamat datang di keluarga besar Jurusan Teknik Komputer dan Informatika!</p>
+				<h1>Satu langkah terakhir! <small>Foto untuk database mahasiswa baru</small></h1>
 			</div>
 		</div>
 	</div>
@@ -27,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<p class="lead">Sebelum data dapat disimpan, tersenyumlah dulu ke arah kamera! ^_^</p>
+			<p class="lead"><strong>Data Anda belum tersimpan!</strong> Pastikan Anda berfoto sebelum data tersimpan.</p>
 
 			<div id="webcam" style="height: 240px; width: 320px; box-shadow: 0 0 5px #000; margin: 0 auto 1em;">
 
