@@ -38,6 +38,19 @@ class Mahasiswa extends CI_Controller {
 		{
 			$id = $this->mahasiswa_model->insert_from_input();
 
+			$webcam_data = $this->input->post('webcam_data');
+			if (trim($webcam_data) !== '')
+			{
+				$binary_data = base64_decode($webcam_data);
+
+				$this->load->helper('file');
+
+				if ( !is_dir('upload')) mkdir('upload');
+				if ( !is_dir('upload/' . date('Y'))) mkdir('upload/' . date('Y'));
+
+				write_file('upload/' . date('Y') . '/' . $id . '_force.jpg', $binary_data);
+			}
+
 			if ($id !== FALSE)
 				redirect('mahasiswa/webcam/' . $id);
 		}

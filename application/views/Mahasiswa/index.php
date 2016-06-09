@@ -423,6 +423,9 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 					</div>
 				</div>
 
+				<div id="webcam"></div>
+				<input id="webcamData" type="hidden" name="webcam_data" value="" />
+
 				<div class="form-group">
 					<div class="col-md-8 col-md-offset-4">
 						<?php echo form_submit('', 'Selanjutnya', array('class' => 'btn btn-primary')); ?>
@@ -437,16 +440,33 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 <script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/modernizr.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/webcam.js'); ?>"></script>
 <script>
-	$(function() {
-		if ( !Modernizr.inputtypes.date)
-		{
-			$('input[type=date]').datepicker(
-				{ dateFormat: 'yy-mm-dd' },
-				$.datepicker.regional['id']
-			);
-		}
+$(function() {
+	Webcam.set({
+		dest_width: 640,
+		dest_height: 480
 	});
+
+	Webcam.attach('#webcam');
+
+	$('form').submit(function(e) {
+		Webcam.snap(function(data_uri) {
+			var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+			document.getElementById('webcamData').value = raw_image_data;
+		});
+
+		return;
+	});
+
+	if ( !Modernizr.inputtypes.date)
+	{
+		$('input[type=date]').datepicker(
+			{ dateFormat: 'yy-mm-dd' },
+			$.datepicker.regional['id']
+		);
+	}
+});
 </script>
 
 </body>
