@@ -11,6 +11,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php echo link_tag('assets/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('assets/css/jquery-ui.css'); ?>
 	<?php echo link_tag('assets/css/style.css'); ?>
+
+	<script>
+	function periksaEjaan(element)
+	{
+		var value = $(element).val();
+
+		if (value.trim() != "")
+		{
+			if (value.toUpperCase() === value || value.toLowerCase() === value)
+			{
+				alert("Gunakan ejaan huruf besar dan huruf kecil dengan benar.");
+				$(element).focus();
+			}
+		}
+	}
+	</script>
 </head>
 <body>
 
@@ -52,6 +68,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 								'id' => 'inputNamaLengkap',
 								'name' => 'nama_lengkap',
 								'placeholder' => 'Nama lengkap',
+								'onblur' => 'periksaEjaan(this);',
 								'autofocus' => ''
 							))); ?>
 					</div>
@@ -63,7 +80,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputNamaPanggilan',
 								'name' => 'nama_panggilan',
-								'placeholder' => 'Nama panggilan'
+								'placeholder' => 'Nama panggilan',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -119,7 +137,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputTempatLahir',
 								'name' => 'tempat_lahir',
-								'placeholder' => 'Tempat lahir'
+								'placeholder' => 'Tempat lahir',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 					<div class="col-md-4">
@@ -153,7 +172,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputAlamatAsal',
 								'name' => 'alamat_asal',
-								'placeholder' => 'Alamat asal'
+								'placeholder' => 'Alamat asal',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -164,7 +184,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputAlamatSekarang',
 								'name' => 'alamat_sekarang',
-								'placeholder' => 'Alamat sekarang'
+								'placeholder' => 'Alamat sekarang',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -175,7 +196,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputAsalSekolah',
 								'name' => 'asal_sekolah',
-								'placeholder' => 'Asal sekolah'
+								'placeholder' => 'Asal sekolah',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -274,7 +296,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputStatus',
 								'name' => 'status',
-								'placeholder' => 'Status'
+								'placeholder' => 'Status',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -285,7 +308,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputCitaCita',
 								'name' => 'cita_cita',
-								'placeholder' => 'Cita-cita'
+								'placeholder' => 'Cita-cita',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -296,7 +320,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputHobi',
 								'name' => 'hobi',
-								'placeholder' => 'Hobi'
+								'placeholder' => 'Hobi',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -307,7 +332,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputOlahraga',
 								'name' => 'olahraga',
-								'placeholder' => 'Olahraga yang disukai'
+								'placeholder' => 'Olahraga yang disukai',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -318,7 +344,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputHalDisukai',
 								'name' => 'hal_disukai',
-								'placeholder' => 'Hal yang disukai'
+								'placeholder' => 'Hal yang disukai',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -329,7 +356,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputHalTidakDisukai',
 								'name' => 'hal_tidak_disukai',
-								'placeholder' => 'Hal yang tidak disukai'
+								'placeholder' => 'Hal yang tidak disukai',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -340,7 +368,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputKebiasaanBaik',
 								'name' => 'kebiasaan_baik',
-								'placeholder' => 'Kebiasan baik'
+								'placeholder' => 'Kebiasan baik',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -351,7 +380,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputKebiasaanBuruk',
 								'name' => 'kebiasaan_buruk',
-								'placeholder' => 'Kebiasaan buruk'
+								'placeholder' => 'Kebiasaan buruk',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -362,7 +392,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputMotivasiMasuk',
 								'name' => 'motivasi_masuk',
-								'placeholder' => 'Motivasi masuk JTK'
+								'placeholder' => 'Motivasi masuk JTK',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -373,7 +404,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php echo form_input(array_merge($attrInput, array(
 								'id' => 'inputMotoHidup',
 								'name' => 'moto_hidup',
-								'placeholder' => 'Moto hidup'
+								'placeholder' => 'Moto hidup',
+								'onblur' => 'periksaEjaan(this);'
 							))); ?>
 					</div>
 				</div>
@@ -385,6 +417,7 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 								'id' => 'inputDeskripsiDiri',
 								'name' => 'deskripsi_diri',
 								'placeholder' => 'Deskripsi diri',
+								'onblur' => 'periksaEjaan(this);',
 								'rows' => '3'
 							))); ?>
 					</div>
