@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Selamat Datang, Mahasiswa Baru JTK <?php echo date('Y'); ?>!</title>
 
 	<?php echo link_tag('assets/css/bootstrap.min.css'); ?>
+	<?php echo link_tag('assets/css/jquery-ui.css'); ?>
 	<?php echo link_tag('assets/css/style.css'); ?>
 </head>
 <body>
@@ -401,6 +402,19 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 </div>
 
 <script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/modernizr.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
+<script>
+	$(function() {
+		if ( !Modernizr.inputtypes.date)
+		{
+			$('input[type=date]').datepicker(
+				{ dateFormat: 'yy-mm-dd' },
+				$.datepicker.regional['id']
+			);
+		}
+	});
+</script>
 
 </body>
 </html>
