@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p class="next-step">Silakan ikuti panduan selanjutnya dari kakak tingkatmu mengenai aktivitas selanjutnya di tempat ini. (Tidak lama, kok! Janji :D)</p>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 
 </body>
