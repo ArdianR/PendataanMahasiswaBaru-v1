@@ -1,0 +1,3 @@
+ALTER TABLE `mahasiswa` ADD INDEX(`agama`);
+
+ALTER TABLE `mahasiswa` ADD FOREIGN KEY (`agama`) REFERENCES `agama`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
