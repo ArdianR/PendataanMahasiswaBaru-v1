@@ -40,9 +40,13 @@ class Sync extends CI_Controller {
 				'base_uri' => $endpoint
 			));
 
+			echo 'Opening session ...' . str_repeat(' ', 1000);
+
 			$session_id = $client->request('POST', 'start_session')->getBody();
 			if ($session_id == 'ERROR')
 				return false;
+
+			echo 'Session ID: ' . $session_id . '<br>' . str_repeat(' ', 1000);
 
 			$list = $this->mahasiswa_model->get_all_unsynced();
 
@@ -89,12 +93,48 @@ class Sync extends CI_Controller {
 				if ($id == 'ERROR')
 					return false;
 
+				if (file_exists(FCPATH . 'upload/' . date('Y') . '/' . $mahasiswa->id . '.jpg'))
+				{
+					echo '<br>&nbsp&nbsp&nbsp&nbsp&nbsp Uploading normal photo ... ' . str_repeat(' ', 1000);
+
+					$result = $client->request('POST', 'add_webcam/' . $session_id . '/' . $id, array(
+						'form_params' => array(
+							'webcam_data' => base64_encode(file_get_contents(FCPATH . 'upload/' . date('Y') . '/' . $mahasiswa->id . '.jpg'))
+						)
+					))->getBody();
+
+					if ($result == 'ERROR')
+						return false;
+
+					echo 'Uploaded. ' . str_repeat(' ', 1000);
+				}
+
+				if (file_exists(FCPATH . 'upload/' . date('Y') . '/' . $mahasiswa->id . '_force.jpg'))
+				{
+					echo '<br>&nbsp&nbsp&nbsp&nbsp&nbsp Uploading candid photo ... ' . str_repeat(' ', 1000);
+
+					$result = $client->request('POST', 'add_webcam/' . $session_id . '/' . $id . '/force', array(
+						'form_params' => array(
+							'webcam_data' => base64_encode(file_get_contents(FCPATH . 'upload/' . date('Y') . '/' . $mahasiswa->id . '_force.jpg'))
+						)
+					))->getBody();
+
+					if ($result == 'ERROR')
+						return false;
+
+					echo 'Uploaded. ' . str_repeat(' ', 1000);
+				}
+
 				$this->db->where('id', $mahasiswa->id)->update('mahasiswa', array('synced_at' => date('Y-m-d H:i:s')));
 
 				echo "Success: " . $mahasiswa->id . " to " . $id . "<br>" . str_repeat(' ', 1000);
 			}
 
+			echo 'Closing session ... ' . str_repeat(' ', 1000);
+
 			$client->request('POST', 'end_session/' . $session_id);
+
+			echo 'Closed.';
 		}
 	}
 
@@ -140,5 +180,30 @@ class Sync extends CI_Controller {
 		{
 			echo "ERROR";
 		}	
+	}
+
+	public function add_webcam($session_id, $mahasiswa_id, $type = 'normal')
+	{
+		if ($this->is_client())
+			return false;
+
+		$suffix = ($type == 'force' ? '_force' : '');
+
+		$webcam_data = $this->input->post('webcam_data');
+		$binary_data = base64_decode($webcam_data);
+
+		$this->load->helper('file');
+
+		if ( !is_dir('upload')) mkdir('upload');
+		if ( !is_dir('upload/' . date('Y'))) mkdir('upload/' . date('Y'));
+
+		if ( ! write_file('upload/' . date('Y') . '/' . $mahasiswa_id . $suffix . '.jpg', $binary_data))
+		{
+			echo 'ERROR';
+		}
+		else
+		{
+			echo 'OK';
+		}
 	}
 }
