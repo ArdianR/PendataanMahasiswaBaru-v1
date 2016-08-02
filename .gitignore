@@ -7,3 +7,7 @@
 user_guide
 upload
 data.db
+
+# Composer
+composer.phar
+/vendor/
