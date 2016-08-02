@@ -3,6 +3,7 @@
 		"vendor-dir": "application/vendor"
 	},
 	"require": {
-		"php": ">=5.2.4"
+		"php": ">=5.2.4",
+		"guzzlehttp/guzzle": "~6.0"
 	}
 }
