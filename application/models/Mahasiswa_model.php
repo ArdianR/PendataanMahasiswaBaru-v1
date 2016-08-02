@@ -153,7 +153,7 @@ class Mahasiswa_model extends CI_Model {
 					  `deskripsi_diri` text NOT NULL,
 					  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 					  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-					  `synced_at` timestamp
+					  `synced_at` timestamp NULL
 					)");
 
 		if ($db->dbdriver == "mysqli")
