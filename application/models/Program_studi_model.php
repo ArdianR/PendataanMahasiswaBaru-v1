@@ -26,4 +26,44 @@ class Program_studi_model extends CI_Model {
 
 		return $result;
 	}
+
+	public function create_basic_schema($db = NULL)
+	{
+		if ($db === NULL)
+			$db = $this->db;
+
+		return $db->query("CREATE TABLE `program_studi` (
+							  `id` varchar(5) NOT NULL PRIMARY KEY,
+							  `program_studi` varchar(30) NOT NULL
+							)");
+	}
+
+	public function insert_basic_rows($db = NULL)
+	{
+		if ($db === NULL)
+			$db = $this->db;
+		
+		return $db->query("INSERT INTO `program_studi` (`id`, `program_studi`) VALUES
+							('D3-TI', 'D-III Teknik Informatika'),
+							('D4-TI', 'D-IV Teknik Informatika')");
+	}
+
+	public function insert_rows_from_master($db)
+	{
+		if ($db === NULL)
+			return false;
+
+		$result = $this->get_all();
+
+		$db->trans_start();
+
+		foreach ($result as $data)
+		{
+			$db->query("INSERT INTO `program_studi` (`id`, `program_studi`) VALUES (?, ?)",
+						array($data->id, $data->program_studi));
+		}
+
+		$db->trans_complete();
+		return $db->trans_status();
+	}
 }

@@ -96,4 +96,58 @@ class Mahasiswa_model extends CI_Model {
 			return $query;
 		}
 	}
+
+	public function create_basic_schema($db = NULL)
+	{
+		if ($db === NULL)
+			$db = $this->db;
+
+		$db->trans_start();
+
+		$db->query("CREATE TABLE `mahasiswa` (
+					  `id` integer NOT NULL PRIMARY KEY AUTO" . ($db->dbdriver == "mysqli" ? "_" : "") . "INCREMENT,
+					  `nama_lengkap` text NOT NULL,
+					  `nama_panggilan` text NOT NULL,
+					  `jenis_kelamin` " . ($db->dbdriver == "mysqli" ? "enum('L','P')" : "char(1)") . " NOT NULL,
+					  `program_studi` varchar(5) NOT NULL REFERENCES `program_studi` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+					  `jalur_masuk` integer NOT NULL REFERENCES `jalur_penerimaan` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+					  `tempat_lahir` text NOT NULL,
+					  `tanggal_lahir` date NOT NULL,
+					  `agama` integer NOT NULL REFERENCES `agama` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+					  `alamat_asal` text NOT NULL,
+					  `alamat_sekarang` text NOT NULL,
+					  `asal_sekolah` text NOT NULL,
+					  `jurusan_asal` text NOT NULL,
+					  `nomor_hp` varchar(20) NOT NULL,
+					  `email` text NOT NULL,
+					  `facebook` text,
+					  `twitter` text,
+					  `instagram` text,
+					  `line` text,
+					  `status` text NOT NULL,
+					  `cita_cita` text NOT NULL,
+					  `hobi` text NOT NULL,
+					  `olahraga` text NOT NULL,
+					  `hal_disukai` text NOT NULL,
+					  `hal_tidak_disukai` text NOT NULL,
+					  `kebiasaan_baik` text NOT NULL,
+					  `kebiasaan_buruk` text NOT NULL,
+					  `motivasi_masuk` text NOT NULL,
+					  `moto_hidup` text NOT NULL,
+					  `deskripsi_diri` text NOT NULL,
+					  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+					  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+					  `synced_at` timestamp
+					)");
+
+		if ($db->dbdriver == "mysqli")
+		{
+			$db->query("ALTER TABLE `mahasiswa` ADD INDEX(`jalur_masuk`)");
+			$db->query("ALTER TABLE `mahasiswa` ADD INDEX(`program_studi`)");
+			$db->query("ALTER TABLE `mahasiswa` ADD INDEX(`agama`)");
+		}
+
+		$db->trans_complete();
+		return $db->trans_status();
+	}
 }
