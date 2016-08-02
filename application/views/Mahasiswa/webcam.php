@@ -92,6 +92,8 @@ $(document).ready(function() {
 			document.getElementById('webcamData').value = raw_image_data;
 			document.getElementById('webcamForm').submit();
 		});
+
+		$('#submit').hide();
 	});
 
 });

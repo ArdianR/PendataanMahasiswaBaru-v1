@@ -456,6 +456,8 @@ $(function() {
 			document.getElementById('webcamData').value = raw_image_data;
 		});
 
+		$('form input[type="submit"]').prop('disabled', true);
+
 		return;
 	});
 
