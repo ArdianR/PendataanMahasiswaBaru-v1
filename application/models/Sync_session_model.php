@@ -11,7 +11,7 @@ class Sync_session_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function get_all($tahun)
+	public function get_all()
 	{
 		$query = $this->db->get('sync_session');
 		return $query->result();
@@ -21,7 +21,7 @@ class Sync_session_model extends CI_Model {
 	{
 		$id = md5(microtime());
 
-		$query = $db->query("INSERT INTO `sync_session` (`id`) VALUES (?)", array($id));
+		$query = $this->db->query("INSERT INTO `sync_session` (`id`) VALUES (?)", array($id));
 
 		if ($query)
 		{
