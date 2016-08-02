@@ -15,9 +15,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="container">
 	<div class="col-md-12">
-		<h1>Aplikasi ini tidak dapat digunakan di browser Google Chrome.</h1>
-		<h3>Cobalah menggunakan Mozilla Firefox atau Microsoft Edge.</h3>
-		<h4>Google Chrome tidak support mengaktifkan webcam tanpa HTTPS.</h4>
+		<?php if (ENVIRONMENT == 'cli-server') : ?>
+			<h1>Aplikasi ini berjalan di mode lokal, dan hanya dapat dignakan dengan Google Chrome.</h1>
+			<h4>Menggunakan Google Chrome di mode lokal membantu pengaktifan webcam yang lebih baik.</h4>
+		<?php else : ?>
+			<h1>Aplikasi ini berjalan di mode server, dan tidak dapat digunakan di browser Google Chrome.</h1>
+			<h3>Cobalah menggunakan Mozilla Firefox atau Microsoft Edge.</h3>
+			<h4>Google Chrome tidak support mengaktifkan webcam tanpa HTTPS.</h4>
+		<?php endif; ?>
 	</div>
 </div>
 

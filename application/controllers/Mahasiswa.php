@@ -17,8 +17,14 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('user_agent');
 
-		if ($this->agent->browser() === 'Chrome' && ENVIRONMENT != 'development')
+		if (ENVIRONMENT == 'cli-server' && $this->agent->browser() !== 'Chrome')
+		{
 			redirect('error/browser_not_compatible');
+		}
+		else if (ENVIRONMENT == 'production' && $this->agent->browser() === 'Chrome')
+		{
+			redirect('error/browser_not_compatible');
+		}
 	}
 
 	public function index()
