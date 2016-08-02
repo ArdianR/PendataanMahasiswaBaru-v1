@@ -33,6 +33,8 @@ class Mahasiswa_model extends CI_Model {
 	public $moto_hidup;
 	public $deskripsi_diri;
 	public $created_at;
+	public $updated_at;
+	public $synced_at;
 
 	public function __construct()
 	{
@@ -87,7 +89,21 @@ class Mahasiswa_model extends CI_Model {
 		$this->motivasi_masuk = $this->input->post('motivasi_masuk');
 		$this->moto_hidup = $this->input->post('moto_hidup');
 		$this->deskripsi_diri = $this->input->post('deskripsi_diri');
-		$this->created_at = date('Y-m-d H:i:s');
+
+		if ($this->input->post('created_at'))
+		{
+			/* Sync from client to server */
+
+			$this->created_at = $this->input->post('created_at');
+			$this->updated_at = $this->created_at;
+			$this->synced_at = date('Y-m-d H:i:s');
+		}
+		else
+		{
+			/* First create at client */
+			
+			$this->created_at = date('Y-m-d H:i:s');
+		}
 
 		$query = $this->db->insert('mahasiswa', $this);
 		if ($query) {
