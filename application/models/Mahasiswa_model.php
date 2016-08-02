@@ -95,7 +95,7 @@ class Mahasiswa_model extends CI_Model {
 			/* Sync from client to server */
 
 			$this->created_at = $this->input->post('created_at');
-			$this->updated_at = $this->created_at;
+			$this->updated_at = $this->input->post('updated_at');
 			$this->synced_at = date('Y-m-d H:i:s');
 		}
 		else
