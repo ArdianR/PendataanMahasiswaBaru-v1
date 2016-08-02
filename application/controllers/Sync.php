@@ -58,4 +58,21 @@ class Sync extends CI_Controller {
 
 		echo "Closed";
 	}
+
+	public function add_mahasiswa($session_id)
+	{
+		if ($this->is_client())
+			return false;
+
+		$id = $this->mahasiswa_model->insert_from_input();
+
+		if ($id)
+		{
+			echo $id;
+		}
+		else
+		{
+			echo "ERROR";
+		}	
+	}
 }
