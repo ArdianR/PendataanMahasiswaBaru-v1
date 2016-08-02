@@ -48,4 +48,14 @@ class Sync extends CI_Controller {
 			echo "ERROR";
 		}
 	}
+
+	public function end_session($session_id)
+	{
+		if ($this->is_client())
+			return false;
+
+		$query = $this->sync_session_model->close_session($session_id);
+
+		echo "Closed";
+	}
 }

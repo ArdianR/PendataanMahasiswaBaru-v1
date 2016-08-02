@@ -33,6 +33,14 @@ class Sync_session_model extends CI_Model {
 		}
 	}
 
+	public function close_session($session_id)
+	{
+		$data = array('end_time' => date('Y-m-d H:i:s'));
+
+		$this->db->where('id', $session_id);
+		return $this->db->update('sync_session', $data);
+	}
+
 	public function create_basic_schema($db = NULL)
 	{
 		if ($db === NULL)
