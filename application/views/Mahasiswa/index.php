@@ -122,8 +122,8 @@ $attrInput = array_merge($attrInputNotRequired, array('required' => ''));
 						<?php foreach($kv_jalur_masuk as $k => $v) : ?>
 						<div class="radio">
 							<label>
-								<?php echo form_radio('jalur_masuk', $k, FALSE, array(
-									'required' => ''
+								<?php echo form_radio('jalur_masuk', $k, count($kv_jalur_masuk) == 1, array(
+									'required' => '',
 								)); ?> <?php echo $v; ?>
 							</label>
 						</div>

@@ -30,7 +30,7 @@ class Mahasiswa extends CI_Controller {
 	public function index()
 	{
 		$data['kv_agama'] = $this->agama_model->get_all_kv();
-		$data['kv_jalur_masuk'] = $this->jalur_penerimaan_model->get_all_kv(date('Y'));
+		$data['kv_jalur_masuk'] = $this->jalur_penerimaan_model->get_upcoming_kv();
 		$data['kv_program_studi'] = $this->program_studi_model->get_all_kv();
 
 		$data['kv_jenis_kelamin']['L'] = 'Laki-laki';

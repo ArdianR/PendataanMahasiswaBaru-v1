@@ -29,6 +29,25 @@ class Jalur_penerimaan_model extends CI_Model {
 		return $result;
 	}
 
+	public function get_upcoming()
+	{
+		$query = $this->db->where('end_time >=', date('Y-m-d H:i:s'))->get('jalur_penerimaan');
+		
+		return $query->result();
+	}
+
+	public function get_upcoming_kv()
+	{
+		$query = $this->get_upcoming();
+
+		foreach ($query as $r)
+		{
+			$result[$r->id] = $r->jalur;
+		}
+
+		return $result;
+	}
+
 	public function create_basic_schema($db = NULL)
 	{
 		if ($db === NULL)
