@@ -58,6 +58,12 @@ class Mahasiswa_model extends CI_Model {
 		return FALSE;
 	}
 
+	public function get_all_unsynced()
+	{
+		$query = $this->db->where('synced_at', NULL)->get('mahasiswa');
+		return $query->result();
+	}
+
 	public function insert_from_input()
 	{
 		$this->nama_lengkap = $this->input->post('nama_lengkap');
@@ -103,6 +109,7 @@ class Mahasiswa_model extends CI_Model {
 			/* First create at client */
 			
 			$this->created_at = date('Y-m-d H:i:s');
+			$this->updated_at = $this->created_at;
 		}
 
 		$query = $this->db->insert('mahasiswa', $this);
