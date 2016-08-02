@@ -15,7 +15,8 @@ class Client extends CI_Controller {
 
 	public function index()
 	{
-		unlink(FCPATH . 'client/data.db');
+		if (file_exists(FCPATH . 'data.db'))
+			unlink(FCPATH . 'data.db');
 
 		$this->create_database();
 

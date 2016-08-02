@@ -97,7 +97,7 @@ $db['default'] = array(
 
 $db['sqlite-client'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sqlite:' . FCPATH . 'client/data.db',
+	'hostname' => 'sqlite:' . FCPATH . 'data.db',
 	'username' => '',
 	'password' => '',
 	'database' => '',

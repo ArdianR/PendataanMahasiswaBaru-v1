@@ -6,4 +6,4 @@
 !*/cache/.htaccess
 user_guide
 upload
-client/data.db
+data.db
