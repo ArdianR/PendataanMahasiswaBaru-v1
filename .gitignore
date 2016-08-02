@@ -10,4 +10,4 @@ data.db
 
 # Composer
 composer.phar
-/vendor/
+/application/vendor/
