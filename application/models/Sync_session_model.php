@@ -41,7 +41,7 @@ class Sync_session_model extends CI_Model {
 		return $db->query("CREATE TABLE `sync_session` (
 							  `id` varchar(32) NOT NULL PRIMARY KEY,
 							  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-							  `end_time` timestamp
+							  `end_time` timestamp NULL
 							)");
 	}
 }
