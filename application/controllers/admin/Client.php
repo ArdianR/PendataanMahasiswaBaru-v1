@@ -25,7 +25,28 @@ class Client extends CI_Controller {
 
 	private function create_database()
 	{
-		$db = $this->load->database('sqlite-client', TRUE);
+		$config = array(
+			'dsn'	=> '',
+			'hostname' => 'sqlite:' . FCPATH . 'data.db',
+			'username' => '',
+			'password' => '',
+			'database' => '',
+			'dbdriver' => 'pdo',
+			'dbprefix' => '',
+			'pconnect' => FALSE,
+			'db_debug' => (ENVIRONMENT !== 'production'),
+			'cache_on' => FALSE,
+			'cachedir' => '',
+			'char_set' => 'utf8',
+			'dbcollat' => 'utf8_general_ci',
+			'swap_pre' => '',
+			'encrypt' => FALSE,
+			'compress' => FALSE,
+			'stricton' => FALSE,
+			'failover' => array(),
+			'save_queries' => TRUE
+		);
+		$db = $this->load->database($config, TRUE);
 
 		$this->agama_model->create_basic_schema($db);
 		$this->agama_model->insert_rows_from_master($db);
